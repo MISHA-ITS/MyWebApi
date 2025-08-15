@@ -1,14 +1,13 @@
 ﻿using MyWebApi.BLL.DTOs.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyWebApi.BLL.Services.User
 {
     public interface IUserService
     {
-        Task<IEnumerable<UserDTO>> GetAllAsync();
+        Task<ServiceResponse> CreateAsync(CreateUserDTO dto);
+        Task<ServiceResponse> UpdateAsync(UpdateUserDTO dto);
+        Task<ServiceResponse> DeleteAsync(string id);
+        Task<ServiceResponse?> GetByIdAsync(string id);
+        Task<ServiceResponse> GetAllAsync();
     }
 }

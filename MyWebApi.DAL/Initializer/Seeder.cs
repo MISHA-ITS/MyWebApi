@@ -14,7 +14,7 @@ namespace MyWebApi.DAL.Initializer
 {
     public static class Seeder
     {
-        public static async void Seed(this IApplicationBuilder app)
+        public static async Task Seed(this IApplicationBuilder app)
         {
             using var scope = app.ApplicationServices.CreateScope();
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
