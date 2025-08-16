@@ -14,5 +14,8 @@ namespace MyWebApi.BLL.DTOs.User
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Image { get; set; }
+
+        public List<string> Roles { get; set; } = new();
+        public string RegistrationMethod { get; set; } = "Local";
     }
 }

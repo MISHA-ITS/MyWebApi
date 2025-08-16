@@ -79,7 +79,7 @@ function ProFilePage() {
 
                 {/* Зовнішні акаунти */}
                 <Grid item xs={12} md={6}>
-                    <UserLogins userId={user.nameid || user.sub} />
+                    /*<UserLogins userId={user.nameid || user.sub} />*/
                 </Grid>
             </Grid>
         </Container>

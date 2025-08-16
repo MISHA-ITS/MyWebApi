@@ -71,11 +71,34 @@ namespace MyWebApi.BLL.Services.User
         public async Task<ServiceResponse> GetAllAsync()
         {
             var users = await _userManager.Users.ToListAsync();
+            var result = new List<UserDTO>();
 
-            var dtos = _mapper.Map<List<UserDTO>>(users);
+            foreach (var user in users)
+            {
+                var dto = _mapper.Map<UserDTO>(user);
 
-            return ServiceResponse.Success("Користувачів отримано", dtos);
+                // Ролі користувача
+                var roles = await _userManager.GetRolesAsync(user);
+                dto.Roles = roles.ToList();
+
+                // Метод реєстрації
+                var logins = await _userManager.GetLoginsAsync(user);
+                if (logins.Any())
+                {
+                    // наприклад: Google, Facebook, Microsoft
+                    dto.RegistrationMethod = string.Join(", ", logins.Select(l => l.LoginProvider));
+                }
+                else
+                {
+                    dto.RegistrationMethod = "Local"; // реєстрація через email+пароль
+                }
+
+                result.Add(dto);
+            }
+
+            return ServiceResponse.Success("Користувачів отримано", result);
         }
+
 
         public async Task<ServiceResponse?> GetByIdAsync(string id)
         {

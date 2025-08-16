@@ -13,6 +13,7 @@ function UsersPage() {
         console.log(response.data);
         if (response.status === 200) {
             setUsers(response.data.payLoad);
+            console.log(response.data);
         }
         console.log(response);
     }
