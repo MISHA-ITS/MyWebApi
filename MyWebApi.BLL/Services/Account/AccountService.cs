@@ -51,7 +51,7 @@ namespace MyWebApi.BLL.Services.Account
             {
                 await SendEmailConfirmMessageAsync(user);
 
-                string jwtToken = _jwtTokenService.GenerateToken(user);
+                string jwtToken = _jwtTokenService.GenerateToken(user, "Local");
 
                 return ServiceResponse.Success("Реєтрація успішна", jwtToken);
             }
@@ -88,7 +88,7 @@ namespace MyWebApi.BLL.Services.Account
                 return ServiceResponse.Error($"Неправильний пароль!");
             }
 
-            string jwtToken = _jwtTokenService.GenerateToken(user);
+            string jwtToken = _jwtTokenService.GenerateToken(user, "Local");
 
             return ServiceResponse.Success("Успішний вхід", jwtToken);
         }
@@ -164,7 +164,7 @@ namespace MyWebApi.BLL.Services.Account
                 }
 
                 // Генеруємо JWT токен
-                string jwtToken = _jwtTokenService.GenerateToken(user);
+                string jwtToken = _jwtTokenService.GenerateToken(user, "Google");
 
                 return ServiceResponse.Success("Успішний вхід через Google", jwtToken);
             }

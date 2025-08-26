@@ -9,6 +9,6 @@ namespace MyWebApi.BLL.Services.JwtToken
 {
     public interface IJwtTokenService
     {
-        string GenerateToken(AppUser user);
+        string GenerateToken(AppUser user, string v);
     }
 }

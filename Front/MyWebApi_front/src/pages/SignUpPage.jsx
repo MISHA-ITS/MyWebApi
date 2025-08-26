@@ -39,25 +39,19 @@ function SignUpForm() {
         navigate("/");
     }
 
-    function googleOnSuccessHandler(credentials) {
-      try {
-        const decoded = jwtDecode(credentials.credential);
+  function googleOnSuccessHandler(credentials) {
+    try {
+      const decoded = jwtDecode(credentials.credential);
 
-        // Створюємо об'єкт з даними для нашого API
-        const googleData = {
-          idToken: credentials.credential,
-          firstName: decoded.given_name,
-          lastName: decoded.family_name,
-          email: decoded.email,
-          picture: decoded.picture
-        };
+      console.log("Decoded Google token:", decoded);
 
-        // Викликаємо наш Google login API
-        googleLogin(googleData);
-        navigate("/");
-      } catch (error) {
-        console.error("Error processing Google login:", error);
-      }
+      // ✅ Передаємо напряму як user
+      googleLogin(decoded);
+
+      navigate("/");
+    } catch (error) {
+      console.error("Error processing Google login:", error);
+    }
   }
 
     function googleOnErrorHandler(error) {

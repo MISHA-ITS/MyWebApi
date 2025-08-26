@@ -14,10 +14,11 @@ function App() {
             <Route path="/" element={<DefaultLayout/>}>
                 <Route index element={<MainPage />} />
                 <Route path="/users" element={<UsersPage />} />
-                <Route path="/not-found" element={<NotFoundPage />} />
                 <Route path="/sign-in" element={<SignInPage />} />
                 <Route path="/sign-up" element={<SignUpPage />} />
                 <Route path="/pro-file" element={<ProFilePage />} />
+                <Route path="/profile/:userId" element={<ProFilePage />} />
+                <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>
     );

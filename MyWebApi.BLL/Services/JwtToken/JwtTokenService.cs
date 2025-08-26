@@ -23,7 +23,7 @@ namespace MyWebApi.BLL.Services.JwtToken
             _userManager = userManager;
         }
 
-        public string GenerateToken(AppUser user)
+        public string GenerateToken(AppUser user, string provider)
         {
             var claims = new List<Claim>
             {
@@ -31,7 +31,9 @@ namespace MyWebApi.BLL.Services.JwtToken
                 new Claim("email", user.Email ?? ""),
                 new Claim("name", user.UserName ?? ""),
                 new Claim("firstname", user.FirstName ?? ""),
-                new Claim("lastname" , user.LastName ?? "")
+                new Claim("lastname" , user.LastName ?? ""),
+                new Claim("image", user.Image ?? ""),
+                new Claim("provider", provider)
             };
 
             var roles = _userManager.GetRolesAsync(user).Result;

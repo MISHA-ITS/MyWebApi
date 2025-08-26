@@ -10,8 +10,8 @@ function MainPage() {
     return (
         <>
             <div className="App" style={{textAlign: "center", margin: "50px", backgroundColor: "cadetblue", color: "white", padding: "70px"}}>
-                <h1>Введення у Web 3.0. Використання ASP.NET Core на Azure</h1>
-                <h3>Хмарні технології і використання Microsoft Azure під час розробки додатків (10.0.0)</h3>
+                <h2>Розробка Fintech додатків: Blockchain, криптовалюти, смарт-контракти, Solidity (10.0.0)</h2>
+                <h3>Підготовка до розробки комадного проекту веб. Створення токенів Remix IDE.</h3>
                 {isAuth ? (
                     <Box>
                         <Link to="/users" style={{ textDecoration: "none" }}>
